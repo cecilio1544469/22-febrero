@@ -1,0 +1,73 @@
+int b1= 2;
+int b2= 3;
+int b3= 4;
+int red= 5;
+int blue= 6;
+int green= 7;
+bool e1;
+bool e2;
+bool e3;
+
+void setup() {
+  Serial.begin(9600);
+pinMode(b1,INPUT_PULLUP);
+pinMode(b2,INPUT_PULLUP);
+pinMode(b3,INPUT_PULLUP);
+pinMode(red,OUTPUT);
+pinMode(blue,OUTPUT);
+pinMode(green,OUTPUT);
+ }
+
+void loop() {
+e1=digitalRead(b1);
+e2=digitalRead(b2);
+e3=digitalRead(b3);
+
+if(!e1  && e2 && e3) //red
+{
+digitalWrite(red,HIGH);
+digitalWrite(green,LOW);
+digitalWrite(blue,LOW);
+}
+if(e1  && !e2 && e3) //green
+{
+digitalWrite(red, LOW);
+digitalWrite(green, HIGH);
+digitalWrite(blue, LOW);
+}
+if(e1  && e2 && !e3) //blue
+{
+digitalWrite(red, LOW);
+digitalWrite(green, LOW);
+digitalWrite(blue, HIGH);
+}
+if(!e1  && !e2 && e3) //redandgreen
+{
+digitalWrite(red, HIGH);
+digitalWrite(green, HIGH);
+digitalWrite(blue, LOW);
+}
+if(!e1  && e2 && !e3) //redandblue
+{
+digitalWrite(red, HIGH);
+digitalWrite(green, LOW);
+digitalWrite(blue, HIGH);
+}
+if(e1  && !e2 && !e3) //greenandblue
+{
+digitalWrite(red, LOW);
+digitalWrite(green, HIGH);
+digitalWrite(blue, HIGH);
+}
+if(!e1  && !e2 && !e3) //redandgreenandblu
+{
+digitalWrite(red, HIGH);
+digitalWrite(green, HIGH);
+digitalWrite(blue, HIGH);
+}
+
+digitalWrite(red, LOW);
+digitalWrite(green, LOW);
+digitalWrite(blue, LOW);
+
+}
